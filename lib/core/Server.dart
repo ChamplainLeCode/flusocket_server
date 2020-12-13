@@ -33,8 +33,6 @@ class Slerver {
     else
       serv = serverSockets[serverCode];
     l.log('Server start at {} port {} ', [serv.address.host, serv.port]);
-    //serv.listen(handleClient);
-    print('GENERAL IP = ${await getIP()}');
     return this;
   }
 
@@ -52,12 +50,12 @@ class Slerver {
     return serverSockets[Slerver.hashAddress(address, port)];
   }
 
-  void close(String address, int port) {
+  void close([String address, int port]) {
     ServerSocket server = getServer(address, port);
-    server?.forEach((cli) {
-      cli.close();
-      cli.destroy();
-    });
+    // server?.forEach((cli) {
+    //   cli.close();
+    //   cli.destroy();
+    // });
     server?.close();
     _dataStream?.close();
   }

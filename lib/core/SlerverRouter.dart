@@ -51,7 +51,7 @@ class SlerverRouter {
 
     client.listen((datac) {
       content.write(String.fromCharCodes(datac));
-
+      _logger.log('Data received -- {} --', [content.toString()]);
       while (content.length > SlerverConstants.MIN_SIZE) {
         num start = content.toString().indexOf(SlerverConstants.BEGIN),
             end = content.toString().indexOf(SlerverConstants.END);
